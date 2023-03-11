@@ -141,7 +141,12 @@ const GroupChatModal = ({ children }) => {
             Create Group Chat
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDir="column" alignItems="center">
+          <ModalBody
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+            backgroundColor="#645CBB"
+          >
             <FormControl>
               <Input
                 placeholder="Chat Name"
