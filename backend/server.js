@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const path = require("path");
 
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 const app = express();
@@ -12,15 +13,27 @@ dotenv.config();
 connectDB();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API IS RUNNING SUCCESSFULLY");
-});
+//app.get("/", (req, res) => {
+//res.send("API IS RUNNING SUCCESSFULLY");
+//});
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/messages", messageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+
+//------------------------------------deployment----------------------
+//const __dirname = path.resolve();
+
+__dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Server running on PORT ${PORT}`));
 

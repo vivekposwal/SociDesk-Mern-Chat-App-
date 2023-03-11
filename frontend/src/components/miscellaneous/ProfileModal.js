@@ -44,6 +44,7 @@ const ProfileModal = ({ user, children }) => {
             flexDir="column"
             alignItems="center"
             justifyContent="space-between"
+            backgroundColor="#645CBB"
           >
             <Image
               borderRadius="full"
@@ -59,7 +60,9 @@ const ProfileModal = ({ user, children }) => {
             </Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onClose} colorScheme="blue">
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
