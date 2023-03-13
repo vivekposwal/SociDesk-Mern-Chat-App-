@@ -20,8 +20,8 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.use(notFound);
-app.use(errorHandler);
+//app.use(notFound);
+//app.use(errorHandler);
 
 //------------------------------------deployment----------------------
 //const __dirname = path.resolve();
